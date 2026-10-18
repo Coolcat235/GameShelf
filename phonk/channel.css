@@ -1,0 +1,29 @@
+.channel-hero { padding: 54px 0 48px; }
+.channel-hero h1 { overflow-wrap: anywhere; }
+.channel-player { max-width: 960px; margin-top: 12px; }
+.channel-instructions { max-width: 760px; color: #bdb3c5; font-size: 11px; line-height: 1.7; }
+.channel-video-section { padding-top: 0; }
+.channel-list-help, .channel-empty-state { max-width: 760px; color: #bdb3c5; font-size: 11px; line-height: 1.7; }
+.channel-video-section .video-results { margin-top: 18px; }
+.channel-video-card { min-width: 0; }
+.channel-video-card .video-result { width: 100%; }
+.channel-video-card .channel-video-id { color: #d8b8ed; font-family: "DM Mono", monospace; }
+.channel-key-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.copy-video-id { margin-top: 7px; padding: 7px 9px; border: 1px solid #493753; border-radius: 6px; background: #211a29; color: #e3c8f5; font-size: 9px; cursor: pointer; }
+.copy-video-id:hover, .copy-video-id:focus-visible { border-color: #bb72dc; outline: 0; }
+.channel-matches { max-width: 760px; margin-top: 24px; }
+.channel-matches[hidden] { display: none; }
+.channel-matches h3 { margin: 0; font-size: 17px; }
+.channel-matches > .help { color: #bdb3c5; font-size: 10px; line-height: 1.6; }
+.channel-match-list { display: grid; gap: 9px; margin-top: 12px; }
+.channel-match { display: flex; width: 100%; min-width: 0; align-items: center; gap: 12px; padding: 12px; border: 1px solid #382e42; border-radius: 8px; background: #17131d; color: #f5edf9; text-align: left; cursor: pointer; }
+.channel-match:hover, .channel-match:focus-visible { border-color: #bb72dc; outline: 0; }
+.channel-match img { width: 48px; height: 48px; flex: 0 0 48px; border-radius: 50%; background: #211a29; object-fit: cover; }
+.channel-match span { min-width: 0; }
+.channel-match strong, .channel-match small { display: block; overflow: hidden; text-overflow: ellipsis; }
+.channel-match strong { font-size: 12px; }
+.channel-match small { margin-top: 4px; color: #bdb3c5; font-size: 9px; white-space: nowrap; }
+
+@media (max-width: 480px) {
+  .channel-hero { padding: 39px 0; }
+}

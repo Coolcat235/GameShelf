@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#110d17" />
+    <meta name="description" content="Browse phonk tracks and play YouTube uploads in an embedded player." />
+    <title>Phonk Shelf — GameShelf</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html"><span class="brand-mark">G</span>Game<span>Shelf</span></a>
+        <nav class="site-nav" aria-label="Media pages">
+          <a class="nav-link current" href="index.html" aria-current="page">Phonk music</a>
+          <a class="nav-link" href="youtube.html">YouTube videos</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="hero">
+          <div class="hero-copy">
+            <p class="eyebrow"><span class="pulse"></span> GAMESHELF AFTER HOURS</p>
+            <h1>PHONK<br /><span>on repeat.</span></h1>
+            <p>Your corner for heavy bass, late-night drives, and every slowed-down variation in between.</p>
+            <a class="primary-link" href="#playlist">Explore the playlist <span aria-hidden="true">↓</span></a>
+          </div>
+          <div class="record-art" aria-hidden="true"><span>PHONK<br />SHELF</span></div>
+        </section>
+
+        <section id="playlist" class="section">
+          <div class="section-heading">
+            <div><p class="eyebrow">99 SPOTIFY PHONK PICKS + STARTERS</p><h2>Your phonk playlist</h2></div>
+            <label class="search"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search tracks..." /></label>
+          </div>
+          <div id="filters" class="filters" aria-label="Filter tracks by speed or style">
+            <button class="filter active" data-speed="All" aria-pressed="true">All tracks</button>
+            <button class="filter" data-speed="Normal/Clean" aria-pressed="false">Normal / Clean</button>
+            <button class="filter" data-speed="Slowed" aria-pressed="false">Slowed</button>
+            <button class="filter" data-speed="Super Slowed" aria-pressed="false">Super Slowed</button>
+            <button class="filter" data-speed="Mega Slowed" aria-pressed="false">Mega Slowed</button>
+            <button class="filter" data-speed="Ultra Slowed" aria-pressed="false">Ultra Slowed</button>
+          </div>
+          <div class="results"><span id="count" aria-live="polite"></span><span>Choose a track to play it here</span></div>
+          <div id="tracks" class="tracks"></div>
+          <div id="empty" class="empty" hidden><h3>No tracks found</h3><p>Try another search or speed filter.</p></div>
+        </section>
+
+        <section class="section">
+          <p class="eyebrow">PRESS PLAY, STAY HERE</p>
+          <h2>Listen to a song</h2>
+          <p class="description">
+            These 99 working tracks are a snapshot of Spotify’s <a href="https://open.spotify.com/playlist/37i9dQZF1DWWY64wDtewQt" target="_blank" rel="noreferrer">Phonk playlist</a>; the unplayable ECOS DO ABISMO entry was removed, and later Spotify updates won’t sync automatically. The original starter songs are kept too.
+            Choose a track to search YouTube, then pick the matching upload to play it here. Spotify doesn’t provide video IDs,
+            so matches are selected from YouTube results instead of guessed. Each card also has a Spotify button for a quick taste. YouTube may show ads or block playback.
+          </p>
+          <div class="spotify-preview">
+            <div>
+              <p class="eyebrow">SPOTIFY QUICK TASTE</p>
+              <h3>Preview the Phonk playlist</h3>
+              <p class="help">Choose a track in Spotify’s official player for a preview where available. Spotify may require sign-in. The Spotify playlist is maintained externally and may include tracks, such as ECOS DO ABISMO, that were removed from GameShelf’s song list.</p>
+            </div>
+            <iframe
+              title="Spotify Phonk playlist preview"
+              src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWY64wDtewQt?utm_source=generator"
+              width="100%"
+              height="352"
+              frameborder="0"
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+            ></iframe>
+          </div>
+          <form id="phonk-api-key-form" class="phonk-api-key-form">
+            <label for="phonk-api-key">YouTube Data API key for track search</label>
+            <div class="youtube-key-row">
+              <input id="phonk-api-key" type="password" autocomplete="off" placeholder="Paste your API key" />
+              <button class="primary-link" type="submit">Use key</button>
+            </div>
+            <p class="help">If you already entered your key on the channel page in this tab, it will be filled in automatically. The key stays in this tab only. Restrict it to YouTube Data API v3 and your site’s HTTP referrer; browser keys are visible to site visitors.</p>
+          </form>
+          <p id="youtube-track-search-status" class="status" role="status" aria-live="polite"></p>
+          <div id="youtube-track-search-results" class="youtube-match-list" aria-label="YouTube video matches" hidden></div>
+          <div class="featured-player youtube-featured">
+            <div class="player-heading">
+              <div><p class="eyebrow">YOUTUBE PLAYER</p><h3 id="player-title">Add a YouTube link to start listening</h3></div>
+            </div>
+            <iframe
+              id="youtube-player"
+              title="YouTube phonk music player"
+              src="about:blank"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              loading="lazy"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <p class="playback-note">Playback length, ads, and whether a video can be embedded are controlled by YouTube and the video owner.</p>
+        </section>
+
+        <section class="section add-section">
+          <div>
+            <p class="eyebrow">GROW YOUR SHELF</p>
+            <h2>Add a track</h2>
+            <p class="description">Add another song with its YouTube link. Your additions are saved in this browser on this device.</p>
+          </div>
+          <form id="add-form">
+            <label>Track title<input id="title" maxlength="100" placeholder="e.g. Night Drive" required /></label>
+            <label>Speed / style
+              <select id="speed" required>
+                <option>Normal/Clean</option><option>Slowed</option><option>Super Slowed</option><option>Mega Slowed</option><option>Ultra Slowed</option>
+              </select>
+            </label>
+            <label class="url-field">YouTube video link<input id="youtube-url" type="url" inputmode="url" placeholder="https://www.youtube.com/watch?v=..." aria-describedby="url-help status" required /></label>
+            <p id="url-help" class="help">Paste a YouTube video or playlist link. Added tracks play in the player above.</p>
+            <button class="primary-link add-button" type="submit">Add to playlist <span aria-hidden="true">＋</span></button>
+            <p id="status" class="status" role="status" aria-live="polite"></p>
+          </form>
+        </section>
+      </main>
+      <footer><span>GameShelf ✦ Phonk Shelf</span><span>Music is played by YouTube. Track names belong to their respective owners.</span></footer>
+    </div>
+    <script type="module" src="app.js?v=spotify-quick-taste-1"></script>
+  </body>
+</html>

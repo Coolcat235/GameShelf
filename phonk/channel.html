@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#110d17" />
+    <meta name="description" content="Browse and play a YouTube channel's videos on GameShelf." />
+    <title>Channel videos — GameShelf</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="youtube.css" />
+    <link rel="stylesheet" href="channel.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <header class="topbar">
+        <a class="brand" href="../index.html"><span class="brand-mark">G</span>Game<span>Shelf</span></a>
+        <nav class="site-nav" aria-label="Media pages">
+          <a class="nav-link" href="index.html">Phonk music</a>
+          <a class="nav-link" href="youtube.html">YouTube videos</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="video-hero channel-hero">
+          <p class="eyebrow"><span class="pulse"></span> GAMESHELF CHANNEL</p>
+          <h1 id="channel-title">CHANNEL<br /><span>videos.</span></h1>
+          <p>Find a creator, browse uploads, and play a video here on GameShelf.</p>
+        </section>
+
+        <section class="section custom-video-section">
+          <p class="eyebrow">STEP 1 · FIND CHANNEL VIDEOS</p>
+          <h2 id="channel-subtitle">Channel videos</h2>
+          <p class="description">Enter one YouTube Data API key below. For a channel name search, choose the correct match before loading its uploads. GameShelf lists video titles and IDs; the key is remembered only in this browser tab.</p>
+          <form id="channel-load-form">
+            <label for="channel-api-key">Your YouTube Data API key</label>
+            <div class="youtube-input-row">
+              <input id="channel-api-key" type="password" autocomplete="off" placeholder="Paste your API key" required />
+              <button class="primary-link" type="submit">Find / load channel <span aria-hidden="true">⌕</span></button>
+            </div>
+            <div class="channel-key-actions">
+              <button id="toggle-api-key-visibility" class="copy-video-id" type="button" aria-pressed="false">Show API key</button>
+              <button id="copy-api-key" class="copy-video-id" type="button">Copy API key</button>
+            </div>
+            <p class="help">
+              One key is used for every video request. It is kept in session storage until this tab closes. Restrict it to YouTube Data API v3 and your site’s HTTP referrer.
+              GameShelf cannot create a key; make one in <a href="https://console.cloud.google.com/apis/library/youtube.googleapis.com" target="_blank" rel="noreferrer">Google Cloud Console</a>. Browser keys are visible to site visitors.
+            </p>
+            <p id="channel-status" class="status" role="status" aria-live="polite"></p>
+          </form>
+          <div id="channel-matches" class="channel-matches" hidden>
+            <h3>Choose the right channel</h3>
+            <p class="help">YouTube may return similarly named creators. Check the channel title and ID before selecting.</p>
+            <div id="channel-match-list" class="channel-match-list"></div>
+          </div>
+        </section>
+
+        <section class="section channel-video-section" aria-label="Channel video results">
+          <p class="eyebrow">STEP 2 · VIDEO TITLES AND IDs</p>
+          <h2>All channel videos</h2>
+          <p class="channel-list-help">The complete list appears below as soon as the channel finishes loading. Every entry includes the title, video ID, a copy button, and a play button.</p>
+          <div class="youtube-player channel-player">
+            <div class="player-heading">
+              <div><p class="eyebrow">VIDEO PLAYER</p><h3 id="video-title">Choose a video below</h3></div>
+              <span class="playing-mark" aria-hidden="true">▶</span>
+            </div>
+            <div class="video-frame">
+              <iframe
+                id="channel-player"
+                title="Selected YouTube channel video"
+                src="about:blank"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+          <p class="channel-instructions">Videos are listed below the player. Some videos can still be blocked by age, region, account, or other YouTube restrictions. Shorts are included when YouTube returns them, but are not labeled separately.</p>
+          <div id="channel-results" class="video-results" aria-live="polite">
+            <p class="channel-empty-state">Enter your YouTube API key above and press “Load all videos + IDs.” All titles and IDs will appear here.</p>
+          </div>
+          <button id="load-more-channel-videos" class="primary-link load-more" type="button" hidden>Load next 50 videos</button>
+          <button id="load-all-channel-videos" class="primary-link load-more" type="button" hidden>Load all remaining videos + IDs</button>
+        </section>
+      </main>
+      <footer><span>GameShelf ✦ YouTube Channel</span><span>YouTube provides playback and availability.</span></footer>
+    </div>
+    <script type="module" src="channel.js?v=channel-name-search-1"></script>
+  </body>
+</html>
